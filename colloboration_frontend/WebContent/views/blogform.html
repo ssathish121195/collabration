@@ -1,0 +1,26 @@
+<div class="container">
+<span style="color:red">{{error.message}}</span>
+<form>
+<div class="form-group">
+<label>Blog Title</label>
+<input type="text" ng-model="blog.blogTitle" class="form-control">
+</div>
+<div class="form-group">
+<label>Content</label>
+<textarea rows="4" cols="15" ng-model="blog.blogContent" class="form-control"></textarea>
+
+			<button ng-click="addBold(blog)">Bold</button>
+			<button ng-click="addParagraph(blog)">Paragraph</button>
+			<button ng-click="addBreak(blog)">Break</button>
+			Add Heading<select ng-model="heading"><option
+					value="<h1></h1>" ng-click="addHeading(blog)">h1
+				<option value="<h2></h2>" ng-click="addHeading(blog)">h2
+				<option value="<h3></h3>" ng-click="addHeading(blog)">h3
+				<option value="<h4></h4>" ng-click="addHeading(blog)">h4
+				<option value="<h5></h5>" ng-click="addHeading(blog)">h5
+				<option value="<h6></h6>" ng-click="addHeading(blog)">h6
+				<option></select>
+</div>
+<input type="submit" ng-click="addBlog(blog)" value="Add Blog">
+</form>
+</div>
