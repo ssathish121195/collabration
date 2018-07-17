@@ -1,0 +1,36 @@
+<div class="container">
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<p ng-bind-html="title"></p><br> <b>Author :
+				{{blogPost.postedBy.firstname}}&nbsp;{{blogPost.postedBy.lastname}}</b><br>
+			<b>Posted On: {{blogPost.postedOn | date:'medium'}}</b>
+		</div>
+		<div class="panel-body">
+		    <p ng-bind-html="content"></p><!-- content is blogPost.blogContent as HTML -->
+		</div>
+	</div>
+</div>
+<div>
+<div ng-show="isLiked">
+<a><span class="glyphicon glyphicon-thumbs-up" style="color:blue" ng-click="updateLikes(blogPost.id)"></span></a>
+<!-- delete data from blogpostlikes and decrement the number of likes -->
+</div>
+<div ng-show="!isLiked">
+<a><span class="glyphicon glyphicon-thumbs-up" style="color:black" ng-click="updateLikes(blogPost.id)"></span></a>
+<!--  insert data into blogpostlikes and increment the number of likes -->
+</div>
+{{blogPost.likes}} likes
+</div>
+
+
+<div>
+<textarea rows="3" cols="9" ng-model="commentTxt"></textarea>
+<button type="button" class="button button-default" ng-click="addComment(commentTxt,blogPost)">Add Comment</button>
+<ul style="list-style:none;">
+<li ng-repeat="blogComment in blogComments | orderBy:'blogComment.commentedOn'">
+<b>{{blogComment.commentTxt}}</b> &nbsp;
+<b>Commented By:</b> {{blogComment.commentedBy.email}} &nbsp;
+<b>Commented On:</b> {{blogComment.commentedOn | date:'medium'}}
+</li>
+</ul>
+</div>
